@@ -37,11 +37,21 @@ I will try to post at least twice a week. Writing about the repos I already have
 - GANs in asset allocation/ portfolio construction [paper](https://arxiv.org/pdf/1909.10578.pdf)
 
 - time series forecasting on non-stationary and multi-step prediction [paper](https://papers.nips.cc/paper/8672-shape-and-time-distortion-loss-for-training-deep-time-series-forecasting-models.pdf) [paper's repo](https://github.com/vincent-leguen/DILATE)
+
 - time series clustering [paper](https://papers.nips.cc/paper/8634-learning-representations-for-time-series-clustering.pdf) [paper's repo](https://github.com/FlorentF9/DeepTemporalClustering)
+
+- unsupervised approach to learn universal embeddings of time series [paper](https://papers.nips.cc/paper/8713-unsupervised-scalable-representation-learning-for-multivariate-time-series.pdf) [paper's code](https://github.com/White-Link/UnsupervisedScalableRepresentationLearningTimeSeries)
+
 - cross-sectional learning of tail dependence vs copula [paper](https://papers.nips.cc/paper/8641-cross-sectional-learning-of-extremal-dependence-among-financial-assets.pdf)
+
+- enhancing transformers on time series forecasting [paper](https://papers.nips.cc/paper/8766-enhancing-the-locality-and-breaking-the-memory-bottleneck-of-transformer-on-time-series-forecasting.pdf)
+
 - applying GRU-ODE-Bayes on rarely traded assets [paper](https://papers.nips.cc/paper/8957-gru-ode-bayes-continuous-modeling-of-sporadically-observed-time-series.pdf) [paper's repo](https://github.com/edebrouwer/gru_ode_bayes)
+
 - GANs on financial time series [paper](https://papers.nips.cc/paper/8789-time-series-generative-adversarial-networks.pdf)
-- global to local, DeepGLO [paper](https://papers.nips.cc/paper/8730-think-globally-act-locally-a-deep-neural-network-approach-to-high-dimensional-time-series-forecasting.pdf) [paper's repo](https://github.com/rajatsen91/deepglo)
+
+- global to local, high dim forecasting with DeepGLO [paper](https://papers.nips.cc/paper/8730-think-globally-act-locally-a-deep-neural-network-approach-to-high-dimensional-time-series-forecasting.pdf) [paper's repo](https://github.com/rajatsen91/deepglo)
+
 - revisiting my MSc thesis on structural breaks with Hidden Markov Model, reveloping it with neural nets
 - ResNets, AlexNet
 - position sizing, volatility targeting with ML
