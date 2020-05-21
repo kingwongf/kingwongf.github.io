@@ -4,12 +4,17 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I live in London and while not working as a quant at a UK bank, I love to 
+- applying ML to finance
+- reading interesting papers
+- baking baugettes
 
-### More Information
+not necessarily in this order. 
 
-A place to include any other types of information that you'd like to include about yourself.
+### Interesting facts
+
+I'm from Hong Kong.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[kingwongf@dgmail.com](mailto:kingwongf@dgmail.com)
