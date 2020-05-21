@@ -4,10 +4,10 @@ title: About
 permalink: /about/
 ---
 
-I live in London and while not working as a quant at a UK bank, I love to 
-- applying ML to finance
-- reading interesting papers
-- baking baugettes
+I live in London. When I'm not working as a quant at a UK bank, I love to 
+- apply ML to finance
+- read interesting papers
+- bake baguettes
 
 not necessarily in this order. 
 
