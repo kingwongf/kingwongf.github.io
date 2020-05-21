@@ -57,5 +57,3 @@ I will try to post at least twice a week. Writing about the repos I already have
 - position sizing, volatility targeting with ML
 - sequential boostrapping, why and why not
 
-
-
