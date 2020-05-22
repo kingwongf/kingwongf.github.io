@@ -6,16 +6,16 @@ title: What is this all about
 ## Hello and welcome
 
 
- For several years I have accumulated couple pet projects, mainly involves ML approaches to finance, systematic investing, asset allocation... e.g. how **NOT** to lose money with codes ha.
+ For several years, I have accumulated a couple of pet projects, mainly involved ML approaches to finance, systematic investing, asset allocation... e.g. how **NOT** to lose money with codes ha.
  With over 40 repos/ projects, this also gives me the chance to organise and revist 
  - the ideas I have tried to implement
- - ML tools I found useful
- - testing other's ideas with full or partial replications
- - concepts, algos I always revised before an interview, 
+ - ML tools I find useful
+ - testing others' ideas with full or partial replications
+ - concepts, algos I always review before an interview, 
  - project submissions for interviews
 
 ### Blog post future releases
-I will try to post at least twice a week. Writing about the repos I already have, and sandwiching new ideas in between.
+I will try to post at least twice a week. Writing about the repos I've already made, and sandwiching new ideas in between.
 
 #### Exisiting Repos
 - combining VAR and LSTM in predicting indices returns, inspired by @cerlymarco and Adaptive Portfolio Asset Allocation Optimization with Deep Learning 2018 [repo](https://github.com/kingwongf/var_lstm_mkts) [paper](http://www.thinkmind.org/download.php?articleid=intsys_v11_n12_2018_3)
@@ -52,8 +52,8 @@ I will try to post at least twice a week. Writing about the repos I already have
 
 - global to local, high dim forecasting with DeepGLO [paper](https://papers.nips.cc/paper/8730-think-globally-act-locally-a-deep-neural-network-approach-to-high-dimensional-time-series-forecasting.pdf) [paper's repo](https://github.com/rajatsen91/deepglo)
 
-- revisiting my MSc thesis on structural breaks with Hidden Markov Model, reveloping it with neural nets
+- revisiting my MSc thesis on structural breaks with Hidden Markov Model, redeveloping it with neural nets
 - ResNets, AlexNet
 - position sizing, volatility targeting with ML
-- sequential boostrapping, why and why not
+- sequential boostrapping; why? And why not?
 
