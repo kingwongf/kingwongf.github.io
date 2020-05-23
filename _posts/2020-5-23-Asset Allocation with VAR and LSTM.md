@@ -34,8 +34,13 @@ To keep things simple for now, we are using US, UK, Japan, Germany, EM of equity
 #### 1.1 Building the VAR 
 First find the optimal lag by in-sample fitting the train set. We will use the model with the lowest AIC to produce VAR predictions. 
 #### 1.2 Building the LSTM
-Like using most ML methods, we'll use a Standard Scalar to normalised the data. As mentioned, we can feed a sequence to produce n-step predictions. We will use Kera's (Timeseries Generator)[https://keras.io/api/preprocessing/timeseries/#timeseriesgenerator-class] to train and test our LSTM model. 
-    self.generator_train = TimeseriesGenerator(self.scaled_train_ret, self.scaled_train_ret, length=seq_length, batch_size=32)
+Like using most ML methods, we'll use a Standard Scalar to normalised the data. As mentioned, we can feed a sequence to produce n-step predictions. Kera's (Timeseries Generator)[https://keras.io/api/preprocessing/timeseries/#timeseriesgenerator-class] allows us to map sequence to the target. e.g.
+```
+ TimeseriesGenerator([1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8], length=5) gives 
+ [1,2,3,4,5] =>[6]
+ [2,3,4,5,6] => [7] ...
+```
+
 
 
 
