@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Asset Allocation with VAR and LSTM
+published: true
 ---
 ## Introduction
 Recently I read this [paper](http://www.thinkmind.org/download.php?articleid=intsys_v11_n12_2018_3). Tha authors show they built a portfolio that outperformed a MVO portfolio using predicted returns from a LSTM model. I was a bit skeptical, not only because I have seen numerous fail attempts in predicting a single stock's price using LSTM models (most underperform a simple ARIMA model), but I think the LSTM's prediction of daily returns are essentially stabilising the weights of the portfolio, resulting a better portfolio than the classic Markowitz's MVO portfolio.
 
- 
+
 
 ### Hypothesis
 1. a LSTM model that predicts returns of the markets, underperforming VAR
@@ -29,9 +30,9 @@ Like using most ML methods, we'll use a Standard Scalar to normalised the data. 
  target = [1,2,3,4,5,6,7,8]
  TimeseriesGenerator(features, target, length=5) gives 
  [[11,12,13,14,15],
-  [21,22,23,24,25]] => [6]
+  [21,22,23,24,25]] to [6]
  [[12,13,14,15,16],
-  [22,23,24,25,26]] => [7] ...
+  [22,23,24,25,26]] to [7] ...
 ```
 
 
@@ -41,8 +42,17 @@ Features variation: only price returns are fed as features vs. other features su
 Architecture variation: single LSTM vs staked LSTM, a stacked LSTM as deeper couls be better [paper](https://www.jair.org/index.php/jair/article/view/11030/26198)
 
 #### 1.4 Results
-We first look at the model trained only with past returns. 
+We first look at the model trained only with past returns, which we expect it performs as good as a VAR. 
+![r2_1_stacked.png]({{site.baseurl}}/images/r2_1_stacked.png)
+![MAE_1_stacked.png]({{site.baseurl}}/images/MAE_1_stacked.png)
 
+
+
+ Surprisingly, both LSTM and VAR_LSTM outperforms in predicting US Equity, UK Equity, Germany Equity, Canada Equity price returns compare to the VAR model while underpforms in Japan Equity, UK Bond, Japan Bond and EM Equity. But do any of the models actually predict price returns? If we translate returns back to price levels, we'll see all models predictions merely lagging the real price level, . 
+
+
+
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_Japan_Equity.png" width="48">
 
 
 
