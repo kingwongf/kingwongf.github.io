@@ -78,14 +78,34 @@ If we dive down into individual asset, we see Japan Equity and Bond are doing ma
 
 So there you have it, **LSTM performs no better than VAR in predicting forward return**. 
 
-Could it be we have different features compare to the study? Maybe, but we'll never know unless the authors reveal the identities of the 387 features (which are deduced to 115 principle compenents)  I have also tried monthly returns, which is the frequency used in the study. Even though LSTM_X is the only model with positive R2 in some markets. But the out of sample performance are actually worse than daily frequency for most markets. 
+Could it be we have different features compare to the study? Maybe, but we'll never know unless the authors reveal the identities of the 387 features (which are deduced to 115 principle compenents)  I have also tried monthly returns, which is the frequency used in the study. Even though LSTM_X is the only model with positive R2 in UK Equity, Japan Equity, UK Bond, Germany Bond and Canada Bond. But the out of sample performance are actually worse than daily frequency for most markets. 
 <img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/r2_20_X_stacked.png" width="400" alt="hi" class="inline"/>
 <img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/MAE_20_X_stacked.png" width="400" alt="hi" class="inline"/>
 
 Could the result be better if we adjust target returns by realised volatility or even smooth the features or the target with a tanh function to adjust for low noise-signal ratio? Possibily, but that would be another series of posts. 
-Going back to our second hypthesis, I want to know if these poor predictions actually give a better portfolio than MVO. My guess would be not, as it simply updates the VCV matrix, weights with the latest returns. 
+Going back to our second hypthesis, I want to know if these poor predictions actually give a better portfolio than MVO. My guess would be not, as it simply updates the VCV matrix, weights with the latest returns. The below index portfolios are rebalanced monthly.
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/port_plot.png" width="600" alt="hi" class="inline"/>
+As expected, quite similar. Inspecting the annualised Sharpe and mean Sharpe.
+
+|      |    MVO |    VAR |   LSTM |   LSTM_X |   VAR_LSTM |
+|------|--------|--------|--------|----------|------------|
+| 2016 |  -1.13 |  -1.11 |  -1.15 |    -1.12 |      -1.15 |
+| 2017 |   2.7  |   2.74 |   2.74 |     2.64 |       2.71 |
+| 2018 |   1.5  |   1.4  |   1.35 |     1.23 |       1.34 |
+| 2019 |   0.19 |   0.45 |   0.44 |     0.32 |       0.51 |
 
 
+|     		   |   MVO |   VAR |   LSTM |   LSTM_X |   VAR_LSTM |
+|--------------|-------|-------|--------|----------|------------|
+|  mean Sharpe |  0.82 |  0.87 |   0.85 |     0.77 |       0.85 |
+
+
+Suprisingly VAR slightly outperforms all other portfolios. They are share similar performances. 
+
+**LSTM portfolios show only slight performance enhancement from MVO, but underperforms VAR.**
+
+Is there anything we can do better? There's a landmark paper from Bryan Kelly, AQR [paper](https://dachxiu.chicagobooth.edu/download/ML.pdf) that construct portfolio with a bigger universe(US individual stocks), a broader ML approaches (xgb, deep and shallow neural networks) and more technical analysis features (top features are 1 month momentum, 1 month max return ...). I have tried to replicate the paper and shows similar results. 
+Stay Tuned. 
 
 
 
