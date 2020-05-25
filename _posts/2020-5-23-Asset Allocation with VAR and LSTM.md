@@ -110,7 +110,7 @@ As expected, quite similar. Inspecting the annualised Sharpe and mean Sharpe.
 Suprisingly VAR slightly outperforms all other portfolios. They all share similar performances. And all have better Sharpe than the portfolios in the study.
 
 |              |   MVO |   VAR |   LSTM |   LSTM_X |   VAR_LSTM |
-|----|-------|-------|--------|----------|------------|
+|---|-------|-------|--------|----------|------------|
 |  mean Sharpe |  0.82 |  0.87 |   0.85 |     0.77 |       0.85 |
 
 **LSTM portfolios show only slight performance enhancement from MVO, but underperforms VAR.**
