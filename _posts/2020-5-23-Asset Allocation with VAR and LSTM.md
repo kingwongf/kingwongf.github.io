@@ -4,12 +4,11 @@ title: Asset Allocation with VAR and LSTM
 published: true
 ---
 ## Introduction
-Recently I read this [paper](http://www.thinkmind.org/download.php?articleid=intsys_v11_n12_2018_3). Tha authors show they built a portfolio that outperformed a MVO portfolio using predicted returns from a LSTM model. I was a bit skeptical, not only because I have seen numerous fail attempts in predicting a single stock's price using LSTM models (most underperform a simple ARIMA model). I think the LSTM's prediction of daily returns which are essentially past returns, stabilise the weights of the portfolio, which gives a better portfolio than the classic Markowitz's MVO portfolio.
-
+Recently I read this [paper](http://www.thinkmind.org/download.php?articleid=intsys_v11_n12_2018_3). Tha authors show they built a portfolio that outperformed a MVO portfolio using predicted returns from a LSTM model. I was a bit skeptical, not only because I have seen numerous fail attempts in predicting a single stock's price using LSTM models (most underperform a simple ARIMA model). I think the LSTM's predictions of forward returns are essentially past returns, which stabilise the weights of the portfolio, giving a better portfolio than the classic Markowitz's MVO portfolio.
 
 
 ### Hypothesis
-1. a LSTM model that predicts returns of the markets, outperforming a Vector Autoregressive (VAR) model
+1. a LSTM model that predicts returns of the markets, outperforms a Vector Autoregressive (VAR) model
 2. a portfolio that outperforms the classic Markowitz's MVO portfolio even if the LSTM's predictions underperforms a VAR. And a portfolio using VAR predicitions will also outperforms the classic Markowitz's MVO portfolio
 
 #### Why LSTM maybe useful?  
