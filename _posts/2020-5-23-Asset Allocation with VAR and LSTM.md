@@ -95,7 +95,7 @@ Going back to our second hypothesis, I want to know if these poor predictions gi
 As expected, quite similar. Inspecting the annualised Sharpe and mean Sharpe.
 
 
-|---
+|------+--------+--------+--------+----------+------------|
 |      |    MVO |    VAR |   LSTM |   LSTM_X |   VAR_LSTM |
 |------|--------|--------|--------|----------|------------|
 | 2016 |  -1.13 |  -1.11 |  -1.15 |    -1.12 |      -1.15 |
