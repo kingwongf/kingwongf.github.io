@@ -44,7 +44,7 @@ Features variation:
  - past returns and VAR predictions sequence (VAR_LSTM)
 
 #### 1.4 Results
-We used the R2 and MAR to compare 1. VAR 2. LSTM 3. LSTM_X 4. VAR_LSTM 
+We used the R2 and MAE to compare 1. VAR 2. LSTM 3. LSTM_X 4. VAR_LSTM 
 
 <img src="images/r2_1_X_stacked.png" width="400" alt="hi" class="inline"/>
 <img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/MAE_1_X_stacked.png" width="400" alt="hi" class="inline"/>
