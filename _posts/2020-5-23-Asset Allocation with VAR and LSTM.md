@@ -9,8 +9,8 @@ Recently I read this [paper](http://www.thinkmind.org/download.php?articleid=int
 
 
 ### Hypothesis
-1. a LSTM model that predicts returns of the markets, underperforming VAR
-2. we can form a portfolio that outperforms the classic Markowitz's MVO portfolio even if the LSTM's predictions underperforms a VAR. And a portfolio using VAR predicitions will also outperforms the classic Markowitz's MVO portfolio
+1. a LSTM model that predicts returns of the markets, outperforming VAR
+2. a portfolio that outperforms the classic Markowitz's MVO portfolio even if the LSTM's predictions underperforms a VAR. And a portfolio using VAR predicitions will also outperforms the classic Markowitz's MVO portfolio
 
 #### Why LSTM maybe useful?  
 The argument of using LSTM in time series forecasting is LSTM cell remembers the past states while processing sequence of data in contrast to a feedforward neural network. 
@@ -18,7 +18,7 @@ That being said, it seems reasonable to assume you would need some sort of linea
 
 I have also read this [paper](https://goelhardik.github.io/images/Multivariate_Aviation_Time_Series_Modeling_VARs_vs_LSTMs.pdf) and this [tutorial](https://towardsdatascience.com/combine-lstm-and-var-for-multivariate-time-series-forecasting-abdcb3c7939b). The first study shows a simple VAR outperforms LSTM while the second tutorial shows by feeding VAR predictions to the LSTM model, the MAE of all predicting variables are marginally better. I'll incorporate VAR predictions as additional features for a second model, VAR-LSTM to see if there's any improvement.
 #### Data
-To keep things simple for now, we are using US, UK, Japan, Germany, EM of equity and bond total return indices spanning from 1990-2019. We splitted the data to train , validation and test set. We add more features such as market sentiment, VIX, momentum etc. later on.
+To keep things simple for now, I using US, UK, Japan, Germany, EM of equity and bond total return indices spanning from 1990-2019. We splitted the data to train , validation and test set. We add more features such as market sentiment, VIX, momentum etc. later on.
 
 #### 1.1 Building the VAR 
 First find the optimal lag by in-sample fitting the train set. We will use the model with the lowest AIC to produce VAR predictions. 
@@ -42,17 +42,48 @@ Features variation: only price returns are fed as features vs. other features su
 Architecture variation: single LSTM vs staked LSTM, a stacked LSTM as deeper couls be better [paper](https://www.jair.org/index.php/jair/article/view/11030/26198)
 
 #### 1.4 Results
-We first look at the model trained only with past returns, which we expect it performs as good as a VAR. 
-![r2_1_stacked.png]({{site.baseurl}}/images/r2_1_stacked.png)
-![MAE_1_stacked.png]({{site.baseurl}}/images/MAE_1_stacked.png)
+We used the R2 and MAR to compare 1. VAR 2. LSTM, uses only past returns as features 3. LSTM_X uses additional features such as market sentiment, momentum, price-ratios 4. VAR_LSTM uses VAR predictions and past returns. 
+
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/r2_1_X_stacked.png" width="400" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/MAE_1_X_stacked.png" width="400" alt="hi" class="inline"/>
 
 
 
- Surprisingly, both LSTM and VAR_LSTM outperforms in predicting US Equity, UK Equity, Germany Equity, Canada Equity price returns compare to the VAR model while underpforms in Japan Equity, UK Bond, Japan Bond and EM Equity. But do any of the models actually predict price returns? If we translate returns back to price levels, we'll see all models predictions merely lagging the real price level, . 
+ Surprisingly, both LSTM, LSTM_X and VAR_LSTM outperforms VAR in UK Equity and Germany Equity price returns while underpforms in UK Bond, Japan Bond and EM Equity. But with scoring negative R2 in other markets and sharing similar MAEs across models, I won't say any of the models are great. Do any of the models actually predict price returns? If we translate returns back to price levels, we'll see all models' predictions merely lagging the real price level, very similar to VAR/ ARIMA model. 
 
 
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_US_Equity_X.png" width="400" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_UK_Equity_X.png" width="400" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_Japan_Equity_X.png" width="400" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_US_Bond_X.png" width="400" alt="hi" class="inline"/>
 
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_Japan_Equity.png" width="48">
+What if we bin the returns to buckets of [-1, 0, 1] and check the confusion matrix? If we look at all markets predicions of each model, every model seems randomly guessing if market's going up or down.
+
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_VAR.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_LSTM.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_LSTM_X.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_VAR_LSTM.png" width="100" alt="hi" class="inline"/>
+If we dive down into individual asset, we see Japan Equity and Bond are doing marginally better than other markets, but performances are similar across all models, including the simple VAR.
+
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_US%20Equity.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_US%20Bond.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_Japan%20Equity.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_Japan%20Bond.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/LSTM_X_Japan%20Bond.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/LSTM_X_Japan%20Equity.png" width="100" alt="hi" class="inline"/>
+
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/LSTM_X_US%20Bond.png" width="100" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/LSTM_X_US%20Equity.png" width="100" alt="hi" class="inline"/>
+
+
+So there you have it, **LSTM performs no better than VAR in predicting forward return**. 
+
+Could it be we have different features compare to the study? Maybe, but we'll never know unless the authors reveal the identities of the 387 features (which are deduced to 115 principle compenents)  I have also tried monthly returns, which is the frequency used in the study. Even though LSTM_X is the only model with positive R2 in some markets. But the out of sample performance are actually worse than daily frequency for most markets. 
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/r2_20_X_stacked.png" width="400" alt="hi" class="inline"/>
+<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/MAE_20_X_stacked.png" width="400" alt="hi" class="inline"/>
+
+Could the result be better if we adjust target returns by realised volatility or even smooth the features or the target with a tanh function to adjust for low noise-signal ratio? Possibily, but that would be another series of posts. 
+Going back to our second hypthesis, I want to know if these poor predictions actually give a better portfolio than MVO. My guess would be not, as it simply updates the VCV matrix, weights with the latest returns. 
 
 
 
