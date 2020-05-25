@@ -47,19 +47,18 @@ Features variation:
 We used the R2 and MAE to compare 1. VAR 2. LSTM 3. LSTM_X 4. VAR_LSTM 
 
 ![r2_1_X_stacked]({{site.baseurl}}/images/r2_1_X_stacked.png){: height="400px" width="auto"} 
-![MAE_1_X_stacked]({{site.baseurl}}/images/MAE_1_X_stacked.png){: height="400px" width="auto"} 
-<img src="images/r2_1_X_stacked.png" width="400" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/MAE_1_X_stacked.png" width="400" alt="hi" class="inline"/>
+![MAE_1_X_stacked]({{site.baseurl}}/images/MAE_1_X_stacked.png){: height="450px" width="auto"} 
+
 
 
 
  Surprisingly, both LSTM, LSTM_X and VAR_LSTM outperforms VAR in UK Equity and Germany Equity price returns while underperforms in UK Bond, Japan Bond and EM Equity. But with scoring negative R2 in other markets and sharing similar MAEs across models, I won't say any of the models are great. Do any of the models really predict price returns? If we translate returns back to price levels, we'll see all models' predictions merely lagging the real price level, very similar to the VAR model. 
 
+![price_US_Equity_X]({{site.baseurl}}/images/price_US_Equity_X.png){: height="400px" width="auto"} 
+![price_UK_Equity_X]({{site.baseurl}}/images/price_UK_Equity_X.png){: height="400px" width="auto"} 
+![price_Japan_Equity_X]({{site.baseurl}}/images/price_Japan_Equity_X.png){: height="400px" width="auto"} 
+![price_US_Bond_X]({{site.baseurl}}/images/price_US_Bond_X.png){: height="400px" width="auto"} 
 
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_US_Equity_X.png" width="400" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_UK_Equity_X.png" width="400" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_Japan_Equity_X.png" width="400" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/price_US_Bond_X.png" width="400" alt="hi" class="inline"/>
 
 What if we bin the returns to buckets of [-1, 0, 1] and check the confusion matrix? If we look at all markets predictions of each model, every model seems randomly guessing if the markets are going up or down.
 
