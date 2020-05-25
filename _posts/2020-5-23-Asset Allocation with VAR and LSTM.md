@@ -62,30 +62,30 @@ We used the R2 and MAE to compare 1. VAR 2. LSTM 3. LSTM_X 4. VAR_LSTM
 
 What if we bin the returns to buckets of [-1, 0, 1] and check the confusion matrix? If we look at all markets predictions of each model, every model seems randomly guessing if the markets are going up or down.
 
-![all_assets_VAR]({{site.baseurl}}/images/all_assets_VAR.png){: height="50px" width="auto"} 
-![all_assets_LSTM]({{site.baseurl}}/images/all_assets_LSTM.png){: height="50px" width="auto"} 
-![all_assets_LSTM_X]({{site.baseurl}}/images/all_assets_LSTM_X.png){: height="50px" width="auto"} 
-![all_assets_VAR_LSTM]({{site.baseurl}}/images/all_assets_VAR_LSTM.png){: height="50px" width="auto"} 
+![all_assets_VAR]({{site.baseurl}}/images/all_assets_VAR.png){: height="150px" width="auto"} 
+![all_assets_LSTM]({{site.baseurl}}/images/all_assets_LSTM.png){: height="150px" width="auto"} 
+![all_assets_LSTM_X]({{site.baseurl}}/images/all_assets_LSTM_X.png){: height="150px" width="auto"} 
+![all_assets_VAR_LSTM]({{site.baseurl}}/images/all_assets_VAR_LSTM.png){: height="150px" width="auto"} 
 
 
 If we dive down into individual asset, we see Japan Equity and Bond are doing marginally better than other markets, but performances are similar across all models, including the simple VAR.
 
-![VAR_US%20Equity]({{site.baseurl}}/images/VAR_US%20Equity.png){: height="50px" width="auto"} 
-![VAR_US%20Bond]({{site.baseurl}}/images/VAR_US%20Bond.png){: height="50px" width="auto"} 
-![VAR_Japan%20Equity]({{site.baseurl}}/images/VAR_Japan%20Equity.png){: height="50px" width="auto"} 
-![VAR_Japan%20Bond]({{site.baseurl}}/images/VAR_Japan%20Bond){: height="50px" width="auto"} 
-![LSTM_X_Japan%20Bond]({{site.baseurl}}/images/LSTM_X_Japan%20Bond.png){: height="50px" width="auto"} 
-![LSTM_X_Japan%20Equity]({{site.baseurl}}/images/LSTM_X_Japan%20Equity.png){: height="400px" width="auto"} 
-![LSTM_X_US%20Bond]({{site.baseurl}}/images/LSTM_X_US%20Bond.png){: height="50px" width="auto"} 
-![LSTM_X_US%20Equity]({{site.baseurl}}/images/LSTM_X_US%20Equity.png){: height="50px" width="auto"} 
+![VAR_US%20Equity]({{site.baseurl}}/images/VAR_US%20Equity.png){: height="100px" width="auto"} 
+![VAR_US%20Bond]({{site.baseurl}}/images/VAR_US%20Bond.png){: height="150px" width="auto"} 
+![VAR_Japan%20Equity]({{site.baseurl}}/images/VAR_Japan%20Equity.png){: height="150px" width="auto"} 
+![VAR_Japan%20Bond]({{site.baseurl}}/images/VAR_Japan%20Bond.png){: height="150px" width="auto"} 
+![LSTM_X_Japan%20Bond]({{site.baseurl}}/images/LSTM_X_Japan%20Bond.png){: height="150px" width="auto"} 
+![LSTM_X_Japan%20Equity]({{site.baseurl}}/images/LSTM_X_Japan%20Equity.png){: height="150px" width="auto"} 
+![LSTM_X_US%20Bond]({{site.baseurl}}/images/LSTM_X_US%20Bond.png){: height="150px" width="auto"} 
+![LSTM_X_US%20Equity]({{site.baseurl}}/images/LSTM_X_US%20Equity.png){: height="150px" width="auto"} 
 
 
 
 So there you have it, **LSTM performs no better than VAR in predicting forward return**. 
 
 Could it be the models have different features compared to the study? Maybe, but we'll never know unless the authors reveal the identities of the 387 features (which are deduced to 115 principal components). I have also tried monthly returns, which is the frequency used in the study. Even though LSTM_X is the only model with positive R2 in UK Equity, Japan Equity, UK Bond, Germany Bond and Canada Bond. But the out of sample performance is worse than the daily frequency for most markets. 
-![r2_20_X_stacked]({{site.baseurl}}/images/r2_20_X_stacked.png){: height="50px" width="auto"} 
-![MAE_20_X_stacked]({{site.baseurl}}/images/MAE_20_X_stacked.png){: height="50px" width="auto"} 
+![r2_20_X_stacked]({{site.baseurl}}/images/r2_20_X_stacked.png){: height="400px" width="auto"} 
+![MAE_20_X_stacked]({{site.baseurl}}/images/MAE_20_X_stacked.png){: height="400px" width="auto"} 
 
 Could the result be better if I adjust target returns by realised volatility or even smooth the features or the target with a tanh function to adjust for low noise-signal ratio? Possibly, but that would be another post. 
 
