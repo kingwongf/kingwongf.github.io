@@ -18,7 +18,7 @@ That being said, it seems reasonable to assume you would need some sort of linea
 
 I have also read this [paper](https://goelhardik.github.io/images/Multivariate_Aviation_Time_Series_Modeling_VARs_vs_LSTMs.pdf) and this [tutorial](https://towardsdatascience.com/combine-lstm-and-var-for-multivariate-time-series-forecasting-abdcb3c7939b). The first study shows a simple VAR outperforms LSTM while the second tutorial shows by feeding VAR predictions to the LSTM model, the MAE of all predicting variables are marginally better. I'll incorporate VAR predictions as additional features for a second model, VAR-LSTM to see if there's any improvement.
 #### Data
-To keep things simple for now, we are using US, UK, Japan, Germany, EM of equity and bond total return indices spanning from 1990-2019. We splitted the data to train , validation and test set. We will add more features such as market sentiment, VIX, momentum etc. later on.
+To keep things simple for now, we are using US, UK, Japan, Germany, EM of equity and bond total return indices spanning from 1990-2019. We splitted the data to train , validation and test set. We add more features such as market sentiment, VIX, momentum etc. later on.
 
 #### 1.1 Building the VAR 
 First find the optimal lag by in-sample fitting the train set. We will use the model with the lowest AIC to produce VAR predictions. 
