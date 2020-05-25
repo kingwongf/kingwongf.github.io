@@ -70,7 +70,7 @@ What if we bin the returns to buckets of [-1, 0, 1] and check the confusion matr
 
 If we dive down into individual asset, we see Japan Equity and Bond are doing marginally better than other markets, but performances are similar across all models, including the simple VAR.
 
-![VAR_US%20Equity]({{site.baseurl}}/images/VAR_US%20Equity.png){: height="100px" width="auto"} 
+![VAR_US%20Equity]({{site.baseurl}}/images/VAR_US%20Equity.png){: height="150px" width="auto"} 
 ![VAR_US%20Bond]({{site.baseurl}}/images/VAR_US%20Bond.png){: height="150px" width="auto"} 
 ![VAR_Japan%20Equity]({{site.baseurl}}/images/VAR_Japan%20Equity.png){: height="150px" width="auto"} 
 ![VAR_Japan%20Bond]({{site.baseurl}}/images/VAR_Japan%20Bond.png){: height="150px" width="auto"} 
