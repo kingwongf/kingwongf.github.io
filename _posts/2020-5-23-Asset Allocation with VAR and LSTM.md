@@ -62,11 +62,22 @@ We used the R2 and MAE to compare 1. VAR 2. LSTM 3. LSTM_X 4. VAR_LSTM
 
 What if we bin the returns to buckets of [-1, 0, 1] and check the confusion matrix? If we look at all markets predictions of each model, every model seems randomly guessing if the markets are going up or down.
 
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_VAR.png" width="100" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_LSTM.png" width="100" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_LSTM_X.png" width="100" alt="hi" class="inline"/>
-<img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/all_assets_VAR_LSTM.png" width="100" alt="hi" class="inline"/>
+![all_assets_VAR]({{site.baseurl}}/images/all_assets_VAR.png){: height="400px" width="auto"} 
+![all_assets_LSTM]({{site.baseurl}}/images/all_assets_LSTM.png){: height="400px" width="auto"} 
+![all_assets_LSTM_X]({{site.baseurl}}/images/all_assets_LSTM_X.png){: height="400px" width="auto"} 
+![all_assets_VAR_LSTM]({{site.baseurl}}/images/all_assets_VAR_LSTM.png){: height="400px" width="auto"} 
+
+
 If we dive down into individual asset, we see Japan Equity and Bond are doing marginally better than other markets, but performances are similar across all models, including the simple VAR.
+
+![VAR_US%20Equity]({{site.baseurl}}/images/VAR_US%20Equity.png){: height="400px" width="auto"} 
+![VAR_US%20Bond]({{site.baseurl}}/images/VAR_US%20Bond.png){: height="400px" width="auto"} 
+![VAR_Japan%20Equity]({{site.baseurl}}/images/VAR_Japan%20Equity.png){: height="400px" width="auto"} 
+![VAR_Japan%20Bond]({{site.baseurl}}/images/VAR_Japan%20Bond){: height="400px" width="auto"} 
+![LSTM_X_Japan%20Bond]({{site.baseurl}}/images/LSTM_X_Japan%20Bond.png){: height="400px" width="auto"} 
+![LSTM_X_Japan%20Equity]({{site.baseurl}}/images/LSTM_X_Japan%20Equity.png){: height="400px" width="auto"} 
+![LSTM_X_US%20Bond]({{site.baseurl}}/images/LSTM_X_US%20Bond.png){: height="400px" width="auto"} 
+![LSTM_X_US%20Equity]({{site.baseurl}}/images/LSTM_X_US%20Equity.png){: height="400px" width="auto"} 
 
 <img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_US%20Equity.png" width="100" alt="hi" class="inline"/>
 <img src="https://github.com/kingwongf/kingwongf.github.io/blob/master/images/VAR_US%20Bond.png" width="100" alt="hi" class="inline"/>
