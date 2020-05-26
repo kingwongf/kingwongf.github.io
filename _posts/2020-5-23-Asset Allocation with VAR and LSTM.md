@@ -4,6 +4,8 @@ title: Asset Allocation with VAR and LSTM
 published: true
 ---
 ## Introduction
+*Today's code can be found at [repo](https://github.com/kingwongf/var_lstm_mkts)*
+
 Recently I read this [paper](http://www.thinkmind.org/download.php?articleid=intsys_v11_n12_2018_3). The authors show they built a portfolio that outperformed a MVO portfolio using predicted returns from a LSTM model. I was a bit sceptical, not only because I have seen numerous fail attempts in predicting a single stock's price using LSTM models (most underperform a simple ARIMA model). I think the LSTM's predictions of forward returns are essentially past returns, which stabilise the weights of the portfolio, giving a better portfolio than the classic Markowitz's MVO portfolio.
 
 
