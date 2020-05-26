@@ -97,25 +97,15 @@ Going back to our second hypothesis, I want to know if these poor predictions gi
 As expected, quite similar. Inspecting the annualised Sharpe and mean Sharpe.
 
 
-|------+--------+--------+--------+----------+------------|
-|      |    MVO |    VAR |   LSTM |   LSTM_X |   VAR_LSTM |
-|------|--------|--------|--------|----------|------------|
-| 2016 |  -1.13 |  -1.11 |  -1.15 |    -1.12 |      -1.15 |
-| 2017 |   2.7  |   2.74 |   2.74 |     2.64 |       2.71 |
-| 2018 |   1.5  |   1.4  |   1.35 |     1.23 |       1.34 |
-| 2019 |   0.19 |   0.45 |   0.44 |     0.32 |       0.51 |
-|------+--------+--------+--------+----------+------------|
+![ann_Sharpe]({{site.baseurl}}/images/ann_Sharpe.png){: height="300px" width="auto"} 
+
 
 
 
 
 Suprisingly VAR slightly outperforms all other portfolios. They all share similar performances. And all have better Sharpe than the portfolios in the study.
 
-|--------------+-------+-------+--------+----------+------------|
-|              |   MVO |   VAR |   LSTM |   LSTM_X |   VAR_LSTM |
-|--------------|-------|-------|--------|----------|------------|
-|  mean Sharpe |  0.82 |  0.87 |   0.85 |     0.77 |       0.85 |
-|--------------+-------+-------+--------+----------+------------|
+![mean_Sharpe]({{site.baseurl}}/images/mean_Sharpe.png){: height="300px" width="auto"} 
 
 **LSTM portfolios show only slight performance enhancement from MVO, but underperforms VAR.**
 
