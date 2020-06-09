@@ -34,6 +34,21 @@ The results are better than I expected. Below is one of the out-of-sample testin
 
 We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and dropped as oppose to MSE predicting a fall and a rise later.  
 
+So far we have 6 variations of the model
+#### Labelling
+1. Trend Labelling
+2. Volatility-adjusted Returns
+3. Smooth Returns
+
+#### Features
+1. FFD Log prices with the paper's features
+2. Log prices with the paper's features
+3. Raw prices with the paper's features
+
+
+To keep it simple, I built a sklearn pipeline consists of a Standard Scalar, an OneHot Encoder for sector information
+
+
 
 
 
