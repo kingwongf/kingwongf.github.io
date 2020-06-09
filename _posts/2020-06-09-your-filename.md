@@ -32,7 +32,7 @@ The results are better than I expected. Below is one of the out-of-sample testin
 
 ![to_post]({{site.baseurl}}/images/to_post.png){: height="450px" width="auto"} 
 
-We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and drop as oppose to MSE predicting a fall and a rise later.  
+We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and dropped as oppose to MSE predicting a fall and a rise later.  
 
 
 
