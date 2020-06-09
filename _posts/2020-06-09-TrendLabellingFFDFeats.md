@@ -30,8 +30,12 @@ So far we have 6 variations of the model
 2. Log prices with the paper's features
 3. Raw prices with the paper's features
 
+### Return frequeny
+1. Daily
+2. Weekly
+3. Monthly, that's what the paper used. 
 
-To keep it simple, I built a sklearn pipeline consists of a Standard Scalar, an OneHot Encoder for sector information
+To keep it simple, I built a sklearn pipeline consists of a Standard Scalar, a Simple Imputer, an OneHot Encoder for sector information and a XGB Regressor or Classifier, depending on the problem. Using forward chaining, the model is retrained with a expanding historical lookback and is tested on one year out-of-sample data every year, starting with first 10 years of training data (1965-1975). I want to test  
 
 
 
