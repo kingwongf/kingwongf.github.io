@@ -15,7 +15,28 @@ The reason to use fractionally differenced log prices is to obtain a stationary 
 
 The other features combinations are log prices and raw prices. I'll leave entropy-based features and Harr-Wavelet transformation in the next post. 
 
-Trend labelling is simple and intuitive. The t-value of the time trend to price level is calculated for at each point in time for a look-ahead period. An expanding window within the look-ahead period is used so the one with the largest absolute t-val is used. Again I used Ray to parallerize the whole process. To calculate volatility-adjusted forward return, the forward returns are simply divided by the rolling volatility. 
+Trend labelling is simple and intuitive. The t-value of the time trend to price level is calculated for at each point in time for a look-ahead period. An expanding window within the look-ahead period is used so the one with the largest absolute t-val is used. Again I used Ray to parallerize the whole process. To calculate volatility-adjusted forward return, the forward returns are simply divided by the rolling volatility. For smoothed forward returns, I used a tanh function to transform raw forward returns to minimise the noise.
+
+The regression problem of preidicting forward returns can be transformed into a classification problem by binning +ve, 0, -ve returns to -1, 0, 1 bins. 
+
+So far we have 6 variations of the model
+#### Labelling
+1. Trend Labelling
+2. Volatility-adjusted Returns
+3. Smooth Returns
+
+#### Features
+1. FFD Log prices with the paper's features
+2. Log prices with the paper's features
+3. Raw prices with the paper's features
+
+
+To keep it simple, I built a sklearn pipeline consists of a Standard Scalar, an OneHot Encoder for sector information
+
+
+
+
+
 
 
 
