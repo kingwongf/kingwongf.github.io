@@ -19,8 +19,8 @@ First I used the purged k fold techniques to split the time series data into bat
 
 To convert the univariate seq2seq to a multivariate case I simply reshaped the inputing tensor layers in the encoder and the hidden layer used by decoder, the decoder however will still predicts one sequence as we only want to predict one sequence at a time. 
 
-Then I seemed to hit a small problem, scaling. Time series data can't be just scaled by Standard Scalar due to a definite leakage from the data mean and standard deviation. I tried to natural log the raw data so the loss wouldn't diverge to infinity/ nan, but the optimiaation also stopped earlier than intended as the actual loss is much smaller due to the natural log. 
-There are few options I tried in the end, 1. dynamically scale each data sample by train input's means and standard deviation (like a rolling window) 2. dynamically scale each day data by an expanding window of means and standard deviation 3. use log transformation, but train very slowly with a batch size of one hoping the model converges to a small enough loss.
+Then I seemed to hit a small problem, scaling. ML models usually work better when you standardised you inputs. However, time series data can't be simply scaled by the Standard Scalar due to a definite leakage from the full data mean and standard deviation. Another reason not to scale the data is that the authors purposed model DILATE is aimed to solve non-stationarity forecasting. It supposed to work with inputs and targets with time-variant moments. When training the model with raw data, unsurprisingly the optimisation quickly leads to divergence/ loss: nan. So, I have tried to natural log the raw data instead. But the optimisation also stopped earlier than intended as the actual loss is much smaller due to the natural log. 
+There are few options I tried in the end, 1. dynamically scale each data sample by train input's means and standard deviation (like a rolling window) 2. dynamically scale each day data by an expanding window of means and standard deviation 3. use log transformation, but train very slowly with a batch size of one hoping the model converges to a small enough loss that won't explode exponentially after inverse transform back to its original scale.
 
 My hypothesis is the predictions will different froma a typical time series forecast model using MSE loss. Instead of giving lagged value as prediction in a MSE loss model, the DILATE model should give a sequence prediction that matches typical price patterns such as trending upward and downward or even channel or breakout patterns. 
 
@@ -28,25 +28,12 @@ My hypothesis is the predictions will different froma a typical time series fore
 Three seq2seq models with the same architecture but three different losses are trained and tested out-of-sample 1. MSE Loss 2. Soft DTW 3. DILATE
 
 ## Results
-The results are better than I expected. Below is one of the out-of-sample testings, 
+The results are better than I expected. Below is one of the out-of-sample testings with the dynamic scaling, 
 
 ![to_post]({{site.baseurl}}/images/to_post.png){: height="450px" width="auto"} 
 
 We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and dropped as oppose to MSE predicting a fall and a rise later.  
 
-So far we have 6 variations of the model
-#### Labelling
-1. Trend Labelling
-2. Volatility-adjusted Returns
-3. Smooth Returns
-
-#### Features
-1. FFD Log prices with the paper's features
-2. Log prices with the paper's features
-3. Raw prices with the paper's features
-
-
-To keep it simple, I built a sklearn pipeline consists of a Standard Scalar, an OneHot Encoder for sector information
 
 
 
