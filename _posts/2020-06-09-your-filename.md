@@ -36,7 +36,7 @@ But there is still an argument of using loss objective function such as Soft-DTW
 
 ![to_post]({{site.baseurl}}/images/dilate_results.png){: height="250px" width="auto"}
 
-But of course we also see when all three models got the prediction wrong in various degrees. 
+But of course we also see when all three models got the prediction wrong in various degrees and MSE loss model has the smallest losses.
 
 ![to_post]({{site.baseurl}}/images/1195.png){: height="250px" width="auto"}
 
