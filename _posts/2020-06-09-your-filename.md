@@ -6,6 +6,7 @@ published: false
 I recently read the [paper](https://github.com/vincent-leguen/DILATE)er, "Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models" published at NEURIPS 2019. It gives a fresh approach to the common problem of non-stationarity in time seies forecasting. The authors introduced 
 DILATE (DIstortion Loss including shApe and TimE) as a new objective loss function. The loss is composed of 1. Shape loss 2. Temporal loss. 
 The shape loss is based on Dynamic Time Warping, which measures the structural similarity between the prediction and targets by temporarily aliging the two sequences. Using [Soft-DTW](http://proceedings.mlr.press/v70/cuturi17a/cuturi17a.pdf), the non-differerntiable DTW becomes differntiable by transforming it via smooth-min. This allows the model to update params as the loss propagates backward.
+
 The temporal loss is based on Time Distortion Index, which is the deviation between the DTW optimal path and the first diagonal pairwise distances between each points in two set of sequences. The authors rewrote TDI into the arg min of the optimal DTW path and Omega, a squared penalising matrix of each point in the sequences of targets and predictions. Since the loss term is still non-differerntiable, the author defined a smooth approximation of the arg min. 
 
 The authors tested their approach with a seq2seq model (a RNN encoder combined with a RNN decoder). The reason to choose seq2seq is that the loss term must be computed on the target and prediction sequences instead of predicting a single/ multiple point estimates. They tested on 1. random simulated data which consists of two spikes 2. ECG data 3. Traffic data. The results are promising as the authoer's model outperformed or equivalent in terms of DTW, TDI and MSE losses when compare to models using MSE or DTW as loss function.
@@ -28,18 +29,15 @@ My hypothesis is the predictions will different froma a typical time series fore
 Three seq2seq models with the same architecture but three different losses are trained and tested out-of-sample 1. MSE Loss 2. Soft DTW 3. DILATE
 
 ## Results
-The results are better than I expected. Below is one of the out-of-sample testings with the dynamic scaling, 
-
+The results are a bit surprising as DILATE did not score the smallest out-of-sample loss in both DTW and TDI like in the original paper. The DILATE model only outperformed in in terms of TDI and scored marginally bottom in terms of DTW and MSE. Best loss in bold.
 ![to_post]({{site.baseurl}}/images/to_post.png){: height="450px" width="auto"} 
 
-We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and dropped as oppose to MSE predicting a fall and a rise later.  
+But there is still an argument of using loss objective function such as Soft-DTW or DILATE other than MAE or MSE when dealing with time-series data. Below is one of the out-of-sample testings. We see Soft-DTW prediction has the best fit, more importantly, DILATE and Soft-DTW outperformed MSE as they correctly predicted price trended upward and dropped as oppose to MSE predicting a fall and a rise later. 
 
+![to_post]({{site.baseurl}}/images/dilate_results.png){: height="250px" width="auto"}
 
+But of course we also see when all three models got the prediction wrong in various degrees. 
 
-
-
-
-
-
+![to_post]({{site.baseurl}}/images/1195.png){: height="250px" width="auto"}
 
 
