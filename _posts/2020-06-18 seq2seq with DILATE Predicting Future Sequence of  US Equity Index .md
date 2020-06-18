@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## DILATE
 ** full code [repo](https://github.com/kingwongf/financeDILATE/blob/master/README.md) ** 
