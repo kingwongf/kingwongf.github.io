@@ -2,6 +2,7 @@
 published: false
 ---
 ## DILATE
+** full code [repo](https://github.com/kingwongf/financeDILATE/blob/master/README.md) ** 
 
 I recently read the [paper](https://github.com/vincent-leguen/DILATE)er, "Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models" published at NEURIPS 2019. It gives a fresh approach to the common problem of non-stationarity in time seies forecasting. The authors introduced 
 DILATE (DIstortion Loss including shApe and TimE) as a new objective loss function. The loss is composed of 1. Shape loss 2. Temporal loss. 
@@ -39,5 +40,15 @@ But there is still an argument of using loss objective function such as Soft-DTW
 But of course we also see when all three models got the prediction wrong in various degrees and MSE loss model has the smallest losses.
 
 ![to_post]({{site.baseurl}}/images/1195.png){: height="250px" width="auto"}
+
+
+When comparing results of different scaling methods using MSE GRU net's losses as the benchmark, we see DILATE has the largest reductions in losses.
+
+![to_post]({{site.baseurl}}/images/dtw_dilate.png){: height="450px" width="auto"} 
+
+The combination of Net DILATE with the exapnding Standard Scalar method has the largest reduction in MSE and DTW losses (inf in TDI due to dividing by zero, a 0 to 0.69 increase). 
+
+## Next steps
+So I have a seq2seq net that outperforms a seq2seq using MSE in predicting the US Equity Total Return Index. Next would be running explanatory analysis such as [SHAP](https://github.com/slundberg/shap) and try predicting different time series. I'll leave that to you [repo](https://github.com/kingwongf/financeDILATE/blob/master/README.md)
 
 
